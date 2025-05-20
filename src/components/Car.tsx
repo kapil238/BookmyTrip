@@ -18,7 +18,7 @@ const destinations = [
 export default function CarSearchForm() {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto">
-      <form className="flex flex-col md:flex-row md:items-end gap-4">
+      <form className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div className="flex-1">
           <Input label="From" name="from" type="select" options={destinations} />
         </div>

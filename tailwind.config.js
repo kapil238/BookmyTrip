@@ -10,7 +10,10 @@ module.exports = {
       fontFamily: {
         poppins: ["'Poppins'", "sans-serif"],
       },
+      animation: {
+        "bounce-slow": "bounce 1.2s infinite",
+      },
     },
   },
   plugins: [],
-}
+};

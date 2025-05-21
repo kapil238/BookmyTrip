@@ -14,8 +14,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="border-b border-dashed border-gray-300">
-      <div className="container mx-auto max-w-7xl flex justify-between items-center">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white border-b border-dashed border-gray-300">
+      <div className="container mx-auto max-w-7xl flex justify-between items-center px-4 sm:px-6 py-3">
         <div className="flex items-center gap-2">
           <Link href="/">
             <Image
@@ -38,7 +38,7 @@ export default function Header() {
         <nav
           className={`${
             menuOpen ? "flex" : "hidden"
-          } absolute top-16 left-0 w-full flex-col bg-white px-4 py-6 shadow-md sm:shadow-none sm:static sm:flex sm:flex-row sm:items-center sm:bg-transparent sm:gap-8 text-sm font-medium z-50 justify-end`}
+          } absolute top-16 left-0 w-full flex-col bg-white px-4 py-6 shadow-md sm:shadow-none sm:static sm:flex sm:flex-row sm:items-center sm:bg-transparent sm:gap-8 text-sm font-medium justify-end`}
         >
           <Link
             href="#"

@@ -8,15 +8,24 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="border-b border-dashed border-gray-300">
-      <div className="container mx-auto px-4 max-w-7xl flex justify-between items-center">
-        <div className="text-orange-500 text-2xl md:text-3xl font-bold flex items-center gap-2">
-          TOOR
+      <div className="container mx-auto max-w-7xl flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Link href="/">
+            <Image
+              src="/images/Logo.png"
+              alt="TOOR Logo"
+              width={180}
+              height={40}
+              className="object-contain"
+            />
+          </Link>
         </div>
 
         <button
@@ -52,9 +61,12 @@ export default function Header() {
             <FaUmbrellaBeach />
             POPULAR PLACES
           </Link>
-          <button className="mt-4 sm:mt-0 border border-orange-400 px-4 py-1 rounded-full text-orange-500 hover:bg-orange-100 transition">
+          <Link
+            href="/auth/login"
+            className="mt-4 sm:mt-0 border border-orange-400 px-4 py-1 rounded-full text-orange-500 hover:bg-orange-100 transition text-center"
+          >
             SIGN IN
-          </button>
+          </Link>
         </nav>
       </div>
     </header>

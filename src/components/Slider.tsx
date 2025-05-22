@@ -19,7 +19,7 @@ export default function Slider({ activeTab, setActiveTab }: SliderProps) {
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm sm:text-base transition-all duration-300 ease-in-out shadow-md ${
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm sm:text-base transition-all duration-300 ease-in-out shadow-md cursor-pointer ${
             activeTab === tab.id
               ? "bg-orange-500 text-white scale-105 hover:bg-orange-600"
               : "bg-white text-gray-700 hover:text-orange-500 hover:shadow-lg border border-gray-200"

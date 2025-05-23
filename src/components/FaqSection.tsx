@@ -28,12 +28,15 @@ const faqs = [
 
 export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const contentRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  // Proper type for contentRefs to avoid red underline
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
+  // Assign height based on open/closed state
   useEffect(() => {
     contentRefs.current.forEach((ref, index) => {
       if (ref) {
@@ -42,6 +45,11 @@ export default function FaqSection() {
       }
     });
   }, [activeIndex]);
+
+  // Helper function to assign refs cleanly
+  const setRef = (index: number) => (el: HTMLDivElement | null) => {
+    contentRefs.current[index] = el;
+  };
 
   return (
     <section className="py-20">
@@ -68,7 +76,7 @@ export default function FaqSection() {
                 )}
               </button>
               <div
-                ref={(el) => (contentRefs.current[index] = el)}
+                ref={setRef(index)}
                 className="overflow-hidden transition-all duration-300 ease-in-out px-5 text-gray-700 text-sm"
                 style={{ height: "0px" }}
               >

@@ -10,6 +10,7 @@ import TrendingPlaces from "@/components/TrendingDestinations/TrendingPlaces";
 import FlightRoutes from "@/components/FlightRoutes";
 import WhyBookWithUs from "@/components/WhyBookWithUs";
 import FaqSection from "@/components/FaqSection";
+import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState("car");
@@ -26,6 +27,7 @@ export default function HomePage() {
       <FlightRoutes />
       <WhyBookWithUs />
       <FaqSection />
+      <Footer />
     </main>
   );
 }

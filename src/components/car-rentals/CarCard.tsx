@@ -1,14 +1,16 @@
+import { useRouter } from "next/navigation";
+
 type CarCardProps = {
-  cartype : string;
+  cartype: string;
   name: string;
   fuelType: string;
   price: string;
   badgeText: string;
   offerText: string;
   imgSrc: string;
-  unit : string;
-  luggage : string;
-  seats : string;
+  unit: string;
+  luggage: string;
+  seats: string;
 };
 
 export default function CarCard({
@@ -23,6 +25,23 @@ export default function CarCard({
   luggage,
   seats,
 }: CarCardProps) {
+  const router = useRouter();
+
+  const handleBookNow = () => {
+    const query = new URLSearchParams({
+      name,
+      cartype,
+      fuelType,
+      price: price.toString(),
+      imgSrc,
+      seats: seats.toString(),
+      luggage: luggage.toString(),
+      unit,
+    }).toString();
+
+    router.push(`/payment?${query}`);
+  };
+
   return (
     <div className="flex flex-col md:flex-row justify-between gap-4 p-4 border rounded-lg bg-white shadow-sm w-full">
       <div className="flex flex-col sm:flex-row items-start gap-4 flex-1">
@@ -68,7 +87,10 @@ export default function CarCard({
           </p>
           <p className="text-xs text-gray-500">{offerText}</p>
           <p className="text-2xl font-bold text-gray-800 mt-1">{price}</p>
-          <button className="mt-2 bg-orange-500 text-white py-1.5 px-4 rounded-full text-sm hover:bg-orange-600 transition w-full md:w-auto">
+          <button
+            onClick={handleBookNow}
+            className="mt-2 bg-orange-500 text-white py-1.5 px-4 rounded-full text-sm hover:bg-orange-600 transition w-full md:w-auto"
+          >
             Book Now
           </button>
         </div>

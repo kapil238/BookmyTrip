@@ -5,8 +5,8 @@ interface InputProps {
   label: string;
   name: string;
   placeholder?: string;
-  type?: string; // "text" | "date" | "select" etc.
-  options?: { value: string; label: string }[]; // For select only
+  type?: string;
+  options?: { value: string; label: string }[];
 }
 
 const Input = ({ label, name, placeholder, type = "text", options }: InputProps) => {

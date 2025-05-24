@@ -63,7 +63,7 @@ export default function FilterSidebar({
                   type="checkbox"
                   checked={selected[category]?.includes(option) || false}
                   onChange={() => handleCheckboxChange(category, option)}
-                  className="accent-blue-600"
+                  className="accent-orange-600"
                 />
                 <span>{option}</span>
               </label>

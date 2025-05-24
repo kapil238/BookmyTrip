@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import FilterSidebar from "@/components/carBooking/FilterSidebar";
-import CarCard from "@/components/carBooking/CarCard";
+import FilterSidebar from "@/components/car-rentals/FilterSidebar";
+import CarCard from "@/components/car-rentals/CarCard";
 import Header from "@/components/Header";
 import CarSearchForm from "@/components/Car";
 import Footer from "@/components/Footer";

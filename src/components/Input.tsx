@@ -1,5 +1,6 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 
 interface InputProps {
   label: string;
@@ -9,7 +10,9 @@ interface InputProps {
   options?: { value: string; label: string }[];
 }
 
-const Input = ({ label, name, placeholder, type = "text", options }: InputProps) => {
+const Input = ({ label, name, placeholder, type = 'text', options }: InputProps) => {
+  const isSelect = type === 'select' && options;
+
   return (
     <div className="flex flex-col w-full max-w-full relative">
       <label
@@ -19,19 +22,22 @@ const Input = ({ label, name, placeholder, type = "text", options }: InputProps)
         {label}
       </label>
 
-      {type === "select" && options ? (
-        <select
-          id={name}
-          name={name}
-          className="px-2 py-3 text-xs border-2 border-orange-400 rounded-md bg-white focus:outline-none"
-        >
-          <option value="">-- Select --</option>
-          {options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
+      {isSelect ? (
+        <div className="relative">
+          <select
+            id={name}
+            name={name}
+            className="w-full px-2 py-3 pr-8 text-xs border-2 border-orange-400 rounded-md bg-white focus:outline-none appearance-none"
+          >
+            <option value="">-- Select --</option>
+            {options.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-400 text-xs pointer-events-none" />
+        </div>
       ) : (
         <input
           type={type}

@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="col-span-1 lg:col-span-1">
           <h2 className="text-3xl font-bold mb-4">BookMyTrip</h2>
           <p className="text-sm text-black">
-            Explore the world with BookMyTrip – your trusted travel companion
+            Explore the world with BookMyTrip – your trusted travel com panion
             for flights, hotels, and unforgettable experiences.
           </p>
         </div>

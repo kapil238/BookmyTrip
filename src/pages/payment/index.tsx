@@ -38,11 +38,23 @@ export default function PaymentPage() {
     location,
     type,
     highlights,
+
+    nights,
+    amenities,
   } = params;
 
   const isFlightBooking = !!airline;
   const isCarBooking = !!cartype;
-  const isTourBooking = !!title && !!location && !!duration && !!type && !!highlights;
+  const isTourBooking =
+    !!title && !!location && !!duration && !!type && !!highlights;
+  const isHotelBooking =
+    !!name &&
+    !!location &&
+    !!nights &&
+    !!type &&
+    !!price &&
+    !!imgSrc &&
+    !!amenities;
 
   return (
     <main className="bg-gray-50 min-h-screen">
@@ -132,30 +144,80 @@ export default function PaymentPage() {
                     </div>
                   </div>
                 </div>
+              ) : isHotelBooking ? (
+                <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-md">
+                  <img
+                    src={imgSrc ?? "/hotel.png"}
+                    alt={name ?? "Hotel"}
+                    className="h-50 object-cover rounded-md"
+                  />
+                  <div className="flex-1 space-y-1">
+                    <div className="font-medium">
+                      Hotel Name: <span className="font-normal">{name}</span>
+                    </div>
+                    <div className="font-medium">
+                      Location: <span className="font-normal">{location}</span>
+                    </div>
+                    <div className="font-medium">
+                      Nights: <span className="font-normal">{nights}</span>
+                    </div>
+                    <div className="font-medium">
+                      Type: <span className="font-normal">{type}</span>
+                    </div>
+                  </div>
+                </div>
               ) : null}
 
               <div className="flex flex-wrap justify-between mt-4 text-sm text-gray-600 gap-2">
                 {isCarBooking ? (
                   <>
-                    <div><span className="text-orange-500">Fuel Type : </span>{fuelType}</div>
-                    <div><span className="text-orange-500">Km Charges : </span> Rs. 14/km after {unit} KM</div>
                     <div>
-                      <span className="text-orange-500">Extra : </span>{luggage} Luggage Bags | {seats} Seats | AC
+                      <span className="text-orange-500">Fuel Type : </span>
+                      {fuelType}
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Km Charges : </span> Rs.
+                      14/km after {unit} KM
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Extra : </span>
+                      {luggage} Luggage Bags | {seats} Seats | AC
                     </div>
                   </>
                 ) : isFlightBooking ? (
                   <>
-                    <div><span className="text-orange-500">Duration : </span>{duration}</div>
-                    <div><span className="text-orange-500">Stops : </span>{stops}</div>
-                    <div><span className="text-orange-500">Class : </span>{cabinClass}</div>
-                    <div><span className="text-orange-500">Flight Type : </span>{flightType}</div>
+                    <div>
+                      <span className="text-orange-500">Duration : </span>
+                      {duration}
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Stops : </span>
+                      {stops}
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Class : </span>
+                      {cabinClass}
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Flight Type : </span>
+                      {flightType}
+                    </div>
                   </>
                 ) : null}
                 {isTourBooking && (
                   <>
-                    <div><span className="text-orange-500">Type : </span>{type}</div>
-                    <div><span className="text-orange-500">Duration : </span>{duration}</div>
-                    <div><span className="text-orange-500">Highlights : </span>{highlights}</div>
+                    <div>
+                      <span className="text-orange-500">Type : </span>
+                      {type}
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Duration : </span>
+                      {duration}
+                    </div>
+                    <div>
+                      <span className="text-orange-500">Highlights : </span>
+                      {highlights}
+                    </div>
                   </>
                 )}
               </div>
@@ -283,10 +345,14 @@ export default function PaymentPage() {
                     router.push(
                       `/payment-method?airline=${airline}&from=${from}&to=${to}&price=${price}&departure=${departure}&arrival=${arrival}&duration=${duration}&cabinClass=${cabinClass}&stops=${stops}`
                     );
-                  }
-                  else if (isTourBooking) {
+                  } else if (isTourBooking) {
                     router.push(
                       `/payment-method?title=${title}&location=${location}&type=${type}&duration=${duration}&price=${price}`
+                    );
+                  }
+                  else if (isHotelBooking) {
+                    router.push(
+                      `/payment-method?name=${name}&location=${location}&nights=${nights}&type=${type}&price=${price}&imgSrc=${imgSrc}&amenities=${amenities}`
                     );
                   }
                 }}

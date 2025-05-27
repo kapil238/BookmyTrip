@@ -35,11 +35,14 @@ export default function PaymentPage() {
     type,
     // imgSrc,
     highlights,
+        nights,
+    amenities,
   } = params;
 
   const isFlightBooking = !!airline;
   const isCarBooking = !!cartype;
   const isTourBooking = !!title && !!location;
+  const isHotelBooking = !!nights && !!amenities;
 
   return (
     <main className="bg-white min-h-screen">
@@ -257,7 +260,34 @@ export default function PaymentPage() {
                       : "N/A"}
                   </p>
                 </>
-              ) : (
+              ) : isHotelBooking ? (
+                <>
+                  <div className="flex items-center gap-4">
+                    {/* <img
+                      src={imgSrc ?? "/placeholder.png"}
+                      alt={name}
+                      className="w-16 h-16 rounded-lg object-cover"
+                    /> */}
+                    <div>
+                      <p>
+                        <span className="font-semibold">Hotel:</span> {name ?? "N/A"}
+                      </p>
+                      <p>
+                        <span className="font-semibold">Location:</span> {location ?? "N/A"}
+                      </p>
+                    </div>
+                  </div>
+                  <p>
+                    <span className="font-semibold">Nights:</span> {nights ?? "N/A"}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Amenities:</span>{" "}
+                    {amenities ? amenities.split(",").join(", ") : "N/A"}
+                  </p>
+                </>
+              )
+              
+              : (
                 <p>No booking details available</p>
               )}
 

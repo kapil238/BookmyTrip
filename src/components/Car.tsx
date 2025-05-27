@@ -26,29 +26,23 @@ export default function CarSearchForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto">
+    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 max-w-full w-full">
       <form
         onSubmit={handleSubmit}
-        className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"
       >
-        <div className="flex-1">
-          <Input label="From" name="from" type="select" options={destinations} />
+        <Input label="From" name="from" type="select" options={destinations} />
+        <Input label="To" name="to" type="select" options={destinations} />
+        <Input label="Start Date" name="startDate" type="date" />
+        <Input label="End Date" name="endDate" type="date" />
+        <div className="sm:col-span-2 lg:col-span-4 flex justify-end">
+          <button
+            type="submit"
+            className="flex items-center justify-center text-base sm:text-lg gap-2 bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 transition duration-200"
+          >
+            <FaSearch /> Search Car
+          </button>
         </div>
-        <div className="flex-1">
-          <Input label="To" name="to" type="select" options={destinations} />
-        </div>
-        <div className="flex-1">
-          <Input label="Start Date" name="startDate" type="date" />
-        </div>
-        <div className="flex-1">
-          <Input label="End Date" name="endDate" type="date" />
-        </div>
-        <button
-          type="submit"
-          className="flex items-center text-lg gap-2 bg-orange-500 text-white px-4 py-3 rounded-xl whitespace-nowrap shrink-0 hover:bg-orange-600 cursor-pointer"
-        >
-          <FaSearch /> Search Car
-        </button>
       </form>
     </div>
   );

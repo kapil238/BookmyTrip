@@ -17,7 +17,7 @@ const Input = ({ label, name, placeholder, type = 'text', options }: InputProps)
     <div className="flex flex-col w-full max-w-full relative">
       <label
         htmlFor={name}
-        className="text-sm font-bold text-orange-400 relative top-2 ml-2 px-1 bg-white w-fit z-10"
+        className="text-sm font-bold text-orange-400 relative top-3 ml-3 px-1 bg-white w-fit z-10"
       >
         {label}
       </label>
@@ -36,7 +36,7 @@ const Input = ({ label, name, placeholder, type = 'text', options }: InputProps)
               </option>
             ))}
           </select>
-          <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-400 text-xs pointer-events-none" />
+          <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-400 text-sm pointer-events-none" />
         </div>
       ) : (
         <input
@@ -44,7 +44,7 @@ const Input = ({ label, name, placeholder, type = 'text', options }: InputProps)
           placeholder={placeholder}
           name={name}
           id={name}
-          className="px-2 py-3 text-xs border-2 border-orange-400 rounded-md focus:outline-none"
+          className="px-2 py-3 text-sm border-2 border-orange-400 rounded-md focus:outline-none"
         />
       )}
     </div>

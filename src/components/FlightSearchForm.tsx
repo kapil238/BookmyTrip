@@ -121,7 +121,7 @@ export default function FlightSearchForm() {
 
           <button
             type="submit"
-            className="flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600"
+            className="flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 text-lg transition-all duration-300"
           >
             <FaSearch />
             Search Flight

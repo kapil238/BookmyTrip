@@ -16,7 +16,7 @@ const carData = [
     offerText: "Book Now and Get Rs 162 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "4",
+    seats: "4 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/wagonr.png",
   },
   {
@@ -28,7 +28,7 @@ const carData = [
     offerText: "Book Now and Get Rs 162 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "4",
+    seats: "4 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/wagonr.png",
   },
   {
@@ -40,7 +40,7 @@ const carData = [
     offerText: "Book Now and Get Rs 166 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "4",
+    seats: "4 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/dezire.png",
   },
   {
@@ -52,10 +52,10 @@ const carData = [
     offerText: "Book Now and Get Rs 227 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "5",
+    seats: "5 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/xylo.png",
   },
-    {
+  {
     cartype: "SUV",
     name: "Ertiga",
     fuelType: "CNG",
@@ -64,7 +64,7 @@ const carData = [
     offerText: "Book Now and Get Rs 227 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "5",
+    seats: "5 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/xylo.png",
   },
   {
@@ -76,7 +76,7 @@ const carData = [
     offerText: "Book Now and Get Rs 227 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "6",
+    seats: "6 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/xylo.png",
   },
   {
@@ -88,7 +88,7 @@ const carData = [
     offerText: "Book Now and Get Rs 227 OFF*",
     unit: "1",
     luggage: "4",
-    seats: "6",
+    seats: "6 Seater",
     imgSrc: "https://transfer.easemytrip.com/assets/img/xylo.png",
   },
 ];
@@ -97,6 +97,7 @@ export default function Home() {
   const [selected, setSelected] = useState<{ [key: string]: string[] }>({
     carType: [],
     fuelType: [],
+    seatingCapacity: [],
   });
 
   const handleCheckboxChange = (category: string, option: string) => {
@@ -115,15 +116,19 @@ export default function Home() {
     const carTypeMatch =
       selected.carType.length === 0 || selected.carType.includes(car.cartype);
     const fuelTypeMatch =
-      selected.fuelType.length === 0 || selected.fuelType.includes(car.fuelType);
-
-    return carTypeMatch && fuelTypeMatch;
+      selected.fuelType.length === 0 ||
+      selected.fuelType.includes(car.fuelType);
+    const seatingCapacityMatch =
+      selected.seatingCapacity.length === 0 ||
+      selected.seatingCapacity.includes(car.seats);
+      
+    return carTypeMatch && fuelTypeMatch && seatingCapacityMatch;
   });
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen">
       <Header />
-      <div className="p-5">
+      <div className="p-5 max-w-7xl mx-auto">
         <CarSearchForm />
       </div>
 

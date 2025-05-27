@@ -37,7 +37,7 @@ const flightData = [
     flightType: "1 Stop",
     cabinClass: "Business",
   },
-    {
+  {
     airline: "Air India Express",
     from: "Delhi",
     to: "Mumbai",
@@ -59,6 +59,9 @@ export default function FlightBooking() {
     flightType: [],
     cabinClass: [],
     airline: [],
+    departureTime: [],
+    duration: [],
+    price: [],
   });
 
   const handleCheckboxChange = (category: string, option: string) => {
@@ -75,13 +78,84 @@ export default function FlightBooking() {
 
   const filteredFlights = flightData.filter((flight) => {
     const flightTypeMatch =
-      selected.flightType.length === 0 || selected.flightType.includes(flight.flightType);
+      selected.flightType.length === 0 ||
+      selected.flightType.includes(flight.flightType);
     const cabinClassMatch =
-      selected.cabinClass.length === 0 || selected.cabinClass.includes(flight.cabinClass);
+      selected.cabinClass.length === 0 ||
+      selected.cabinClass.includes(flight.cabinClass);
     const airlineMatch =
-    selected.airline.length === 0 || selected.airline.includes(flight.airline);
+      selected.airline.length === 0 ||
+      selected.airline.includes(flight.airline);
+    const departureTimeMatch =
+      selected.departureTime.length === 0 ||
+      selected.departureTime.includes(
+        flight.departure.split(" ")[0] === "08:00"
+          ? "Morning"
+          : flight.departure.split(" ")[0] === "09:00"
+          ? "Morning"
+          : flight.departure.split(" ")[0] === "10:00"
+          ? "Afternoon"
+          : flight.departure.split(" ")[0] === "11:00"
+          ? "Afternoon"
+          : flight.departure.split(" ")[0] === "12:00"
+          ? "Afternoon"
+          : flight.departure.split(" ")[0] === "13:00"
+          ? "Afternoon"
+          : flight.departure.split(" ")[0] === "14:00"
+          ? "Afternoon"
+          : flight.departure.split(" ")[0] === "15:00"
+          ? "Afternoon"
+          : flight.departure.split(" ")[0] === "16:00"
+          ? "Evening"
+          : flight.departure.split(" ")[0] === "17:00"
+          ? "Evening"
+          : flight.departure.split(" ")[0] === "18:00"
+          ? "Evening"
+          : flight.departure.split(" ")[0] === "19:00"
+          ? "Evening"
+          : flight.departure.split(" ")[0] === "20:00"
+          ? "Night"
+          : flight.departure.split(" ")[0] === "21:00"
+          ? "Night"
+          : flight.departure.split(" ")[0] === "22:00"
+          ? "Night"
+          : flight.departure.split(" ")[0] === "23:00"
+          ? "Night"
+          : "Unknown"
+      );
+    const durationMatch =
+      selected.duration.length === 0 ||
+      selected.duration.includes(
+        flight.duration.split(" ")[0] === "2h"
+          ? "Less than 2h"
+          : flight.duration.split(" ")[0] === "3h"
+          ? "2h - 4h"
+          : flight.duration.split(" ")[0] === "4h"
+          ? "4h - 6h"
+          : flight.duration.split(" ")[0] === "5h"
+          ? "4h - 6h"
+          : flight.duration.split(" ")[0] === "6h"
+          ? "More than 6h"
+          : "Unknown"
+      );
+    const priceMatch =
+      selected.price.length === 0 ||
+      selected.price.includes(
+        flight.price === "₹4,500"
+          ? "₹0 - ₹5,000"
+          : flight.price === "₹5,200"
+          ? "₹5,001 - ₹10,000"
+          : "Unknown"
+      );
 
-    return flightTypeMatch && cabinClassMatch && airlineMatch;
+    return (
+      flightTypeMatch &&
+      cabinClassMatch &&
+      airlineMatch &&
+      departureTimeMatch &&
+      durationMatch &&
+      priceMatch
+    );
   });
 
   return (
@@ -102,7 +176,9 @@ export default function FlightBooking() {
 
         <div className="lg:col-span-3 space-y-4">
           {filteredFlights.length > 0 ? (
-            filteredFlights.map((flight, index) => <FlightCard key={index} {...flight} />)
+            filteredFlights.map((flight, index) => (
+              <FlightCard key={index} {...flight} />
+            ))
           ) : (
             <p className="text-center text-gray-500">No flights found.</p>
           )}

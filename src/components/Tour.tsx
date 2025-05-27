@@ -59,7 +59,7 @@ export default function Tour() {
 
           <button
             type="submit"
-            className="flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 cursor-pointer"
+            className="flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 cursor-pointer transition duration-200 text-lg"
           >
             <FaSearch />
             Search Tour

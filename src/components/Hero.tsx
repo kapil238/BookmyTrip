@@ -20,7 +20,7 @@ export default function Hero({ activeTab }: HeroProps) {
 
   return (
     <section className="relative bg-[#fcf3eb]">
-      <div className="container mx-auto pt-20 max-w-7xl">
+      <div className="container mx-auto pt-15 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="w-full md:w-2/3">
             {activeTab === "car" && <CarSearchForm />}

@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const filters = {
-  type: ["Adventure", "Cultural", "Beach", "Wildlife"],
-  duration: ["3 Days", "4 Days", "5 Days"],
+  type: ["Beach Resort", "Mountain Resort", "Luxury", "Budget"],
+  nights: ["1 Night", "2 Nights", "3 Nights"],
   location: ["Goa", "Manali", "Jaipur"],
   category: ["Domestic", "International"],
-  price: ["₹0 - ₹25,000", "₹25,001 - ₹50,000", "₹50,001 - ₹75,000", "₹75,001+"],
+  price: ["₹0 - ₹5,000", "₹5,001 - ₹10,000", "₹10,001+"],
 };
 
 export default function FilterSidebar({
@@ -28,15 +28,11 @@ export default function FilterSidebar({
   };
 
   const handleClearAll = () => {
-    const cleared = Object.keys(filters).reduce((acc, key) => {
-      acc[key] = [];
-      return acc;
-    }, {} as { [key: string]: string[] });
+    const cleared = Object.keys(filters).reduce(
+      (acc, key) => ({ ...acc, [key]: [] }),
+      {}
+    );
     setSelected(cleared);
-  };
-
-  const handleApply = () => {
-    setIsOpen(false);
   };
 
   return (
@@ -45,65 +41,62 @@ export default function FilterSidebar({
         <span className="font-semibold text-gray-700 text-base">Filters</span>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 border rounded-md text-sm"
+          className="p-2 border rounded-md text-sm shadow-sm"
+          aria-label="Toggle filters"
         >
-          {isOpen ? (
-            <X size={18} className="text-orange-600" />
-          ) : (
-            <Menu size={18} className="text-orange-600" />
-          )}
+          {isOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
-
       <aside
-        className={`w-full max-w-xs bg-white border rounded-lg p-4 space-y-6 text-sm lg:block transition-all duration-300 ${
+        className={`w-full max-w-xs bg-white border rounded-xl shadow-md p-4 space-y-6 transition-all duration-300 ${
           isOpen ? "block" : "hidden"
-        }`}
+        } lg:block`}
       >
         {Object.entries(filters).map(([category, options]) => (
           <div
             key={category}
-            className="bg-gray-50 rounded-md p-3 shadow-sm border"
+            className="border border-gray-200 rounded-lg p-4 bg-gray-50"
           >
-            <div className="flex justify-between items-center font-semibold mb-2 capitalize">
-              <span>{category.replace(/([A-Z])/g, " $1")}</span>
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-lg font-semibold capitalize">{category}</h3>
               <button
                 onClick={() => handleReset(category)}
-                className="text-orange-600 text-xs"
+                className="text-sm text-orange-500 hover:underline"
               >
                 Reset
               </button>
             </div>
+
+            <hr className="mb-3 border-gray-200" />
+
             {options.map((option) => (
               <label
                 key={option}
-                className="flex items-center space-x-2 py-1 cursor-pointer text-gray-700 hover:text-orange-600 transition duration-200 text-sm"
+                className="flex items-center gap-2 py-1 cursor-pointer text-gray-800 hover:text-orange-600 transition"
               >
                 <input
                   type="checkbox"
                   checked={selected[category]?.includes(option) || false}
                   onChange={() => handleCheckboxChange(category, option)}
-                  className="accent-orange-600 form-checkbox h-4 w-4"
+                  className="accent-orange-600 h-4 w-4"
                 />
-                <span>{option}</span>
+                <span className="text-sm">{option}</span>
               </label>
             ))}
           </div>
         ))}
-
-        {/* Mobile-only buttons */}
-        <div className="flex justify-between gap-2 lg:hidden">
+        <div className="lg:hidden flex justify-between pt-4 border-t mt-4">
           <button
             onClick={handleClearAll}
-            className="flex-1 border border-gray-300 rounded-md py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
+            className="text-sm text-red-600 hover:underline"
           >
             Clear All
           </button>
           <button
-            onClick={handleApply}
-            className="flex-1 bg-orange-600 text-white rounded-md py-2 text-sm hover:bg-orange-700 transition"
+            onClick={() => setIsOpen(false)}
+            className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm"
           >
-            Apply
+            Apply Filters
           </button>
         </div>
       </aside>

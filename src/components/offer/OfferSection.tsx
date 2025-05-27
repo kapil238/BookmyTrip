@@ -1,13 +1,15 @@
 import OfferCard from "./OfferCard";
 
 const OfferSection = () => {
-
   return (
-    <section className="py-10 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-8">Offer For You</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+    <section className="py-14 px-4 max-w-7xl mx-auto">
+      <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-900">
+        Exclusive Offers Just for You
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         <OfferCard
-          title="up to"
+          title="Up to"
           discount="50% Off"
           description="On domestic flights"
           code="DOMESTIC50"
@@ -31,13 +33,14 @@ const OfferSection = () => {
           bgImage="/images/6.png"
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
+
+      <div className="grid grid-cols-1 gap-6">
         <OfferCard
           title="Cashback up to"
           discount="30% Off"
           description="On car and travels"
           code="TRAVELBACK"
-          bgColor="bg-pink-500"
+          bgColor="bg-purple-600"
           bgImage="/images/3.png"
         />
       </div>

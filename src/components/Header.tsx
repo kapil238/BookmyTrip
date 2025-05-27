@@ -47,7 +47,7 @@ export default function Header() {
         >
           <Link
             href="/"
-            className={`flex items-center gap-1 py-2 sm:py-0 ${
+            className={`flex items-center gap-1 py-2 sm:py-0 text-lg ${
               isActive("/") ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
             }`}
           >
@@ -56,7 +56,7 @@ export default function Header() {
           </Link>
           <Link
             href="/booking"
-            className={`flex items-center gap-1 py-2 sm:py-0 ${
+            className={`flex items-center gap-1 py-2 sm:py-0 text-lg ${
               isActive("/booking") ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
             }`}
           >
@@ -65,7 +65,7 @@ export default function Header() {
           </Link>
           <Link
             href="/popularPlace"
-            className={`flex items-center gap-1 py-2 sm:py-0 ${
+            className={`flex items-center gap-1 py-2 sm:py-0 text-lg ${
               isActive("/popularPlace") ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
             }`}
           >

@@ -57,13 +57,13 @@ export default function FilterSidebar({
             {options.map((option) => (
               <label
                 key={option}
-                className="flex items-center space-x-2 py-1 cursor-pointer"
+                className="flex items-center space-x-2 py-1 cursor-pointer text-gray-700 hover:text-orange-600 transition duration-200 text-md"
               >
                 <input
                   type="checkbox"
                   checked={selected[category]?.includes(option) || false}
                   onChange={() => handleCheckboxChange(category, option)}
-                  className="accent-orange-600"
+                  className="accent-orange-600 h-4 w-4 form-checkbox"
                 />
                 <span>{option}</span>
               </label>

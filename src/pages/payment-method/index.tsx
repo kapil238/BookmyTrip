@@ -2,22 +2,44 @@
 
 import Header from "@/components/Header";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "@/components/Input";
 
 export default function PaymentPage() {
   const [method, setMethod] = useState("card");
   const searchParams = useSearchParams();
   const params = Object.fromEntries(searchParams.entries());
-  const { name, cartype, fuelType, price, luggage, seats } = params;
-  const { airline, from, to, departure, arrival, duration, stops, cabinClass } =
-    params;
-  const { title, location, type, imgSrc, highlights } = params;
+
+  // Debug: check all incoming params
+  useEffect(() => {
+    console.log("Params:", params);
+  }, [params]);
+
+  const {
+    name,
+    cartype,
+    fuelType,
+    price,
+    luggage,
+    seats,
+    airline,
+    from,
+    to,
+    departure,
+    arrival,
+    duration,
+    stops,
+    cabinClass,
+    title,
+    location,
+    type,
+    // imgSrc,
+    highlights,
+  } = params;
 
   const isFlightBooking = !!airline;
   const isCarBooking = !!cartype;
-  const isTourBooking =
-    !!title && !!location && !!type && !!imgSrc && !!highlights;
+  const isTourBooking = !!title && !!location;
 
   return (
     <main className="bg-white min-h-screen">
@@ -130,6 +152,7 @@ export default function PaymentPage() {
               </button>
             </form>
           </section>
+
           <aside className="w-full lg:w-1/3 bg-orange-50 p-6 sm:p-8 rounded-xl shadow-md text-gray-700">
             <h2 className="text-lg sm:text-xl font-semibold mb-6 text-orange-600">
               Booking Summary
@@ -208,11 +231,11 @@ export default function PaymentPage() {
               ) : isTourBooking ? (
                 <>
                   <div className="flex items-center gap-4">
-                    <img
+                    {/* <img
                       src={imgSrc ?? "/placeholder.png"}
                       alt={title}
                       className="w-16 h-16 rounded-lg object-cover"
-                    />
+                    /> */}
                     <div>
                       <p>
                         <span className="font-semibold">Tour:</span>{" "}
@@ -229,7 +252,9 @@ export default function PaymentPage() {
                   </p>
                   <p>
                     <span className="font-semibold">Highlights:</span>{" "}
-                    {highlights ?? "N/A"}
+                    {highlights
+                      ? highlights.split(",").join(", ")
+                      : "N/A"}
                   </p>
                 </>
               ) : (
@@ -240,13 +265,7 @@ export default function PaymentPage() {
                 {price ?? "828"}
               </div>
 
-              {isCarBooking && (
-                <p className="mt-4 text-green-700 text-sm font-medium">
-                  ✅ Free Cancellation before 30 minutes of journey time.
-                </p>
-              )}
-
-              {isFlightBooking && (
+              {(isCarBooking || isFlightBooking) && (
                 <p className="mt-4 text-green-700 text-sm font-medium">
                   ✅ Free Cancellation before 30 minutes of journey time.
                 </p>

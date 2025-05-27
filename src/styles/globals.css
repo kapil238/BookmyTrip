@@ -91,7 +91,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* font-family: "Poetsen One", sans-serif; */
+    /* font-family: "Roboto", sans-serif; */
+  font-family: "Lora", serif;
+  letter-spacing: 0.03em;
+  line-height: 2.0;
+  scroll-behavior: smooth;
 }
 
 .dark {

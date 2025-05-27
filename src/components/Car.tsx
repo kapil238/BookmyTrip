@@ -45,7 +45,7 @@ export default function CarSearchForm() {
         </div>
         <button
           type="submit"
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-3 rounded-xl whitespace-nowrap shrink-0 hover:bg-orange-600 cursor-pointer"
+          className="flex items-center text-lg gap-2 bg-orange-500 text-white px-4 py-3 rounded-xl whitespace-nowrap shrink-0 hover:bg-orange-600 cursor-pointer"
         >
           <FaSearch /> Search Car
         </button>

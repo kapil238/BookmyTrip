@@ -17,7 +17,7 @@ const Input = ({ label, name, placeholder, type = 'text', options }: InputProps)
     <div className="flex flex-col w-full max-w-full relative">
       <label
         htmlFor={name}
-        className="text-xs font-bold text-orange-400 relative top-2 ml-2 px-1 bg-white w-fit z-10"
+        className="text-sm font-bold text-orange-400 relative top-2 ml-2 px-1 bg-white w-fit z-10"
       >
         {label}
       </label>
@@ -27,7 +27,7 @@ const Input = ({ label, name, placeholder, type = 'text', options }: InputProps)
           <select
             id={name}
             name={name}
-            className="w-full px-2 py-3 pr-8 text-xs border-2 border-orange-400 rounded-md bg-white focus:outline-none appearance-none"
+            className="w-full px-2 py-3 pr-8 text-sm border-2 border-orange-400 rounded-md bg-white focus:outline-none appearance-none"
           >
             <option value="">-- Select --</option>
             {options.map((opt) => (

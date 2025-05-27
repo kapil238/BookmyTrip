@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ["'Poppins'", "sans-serif"],
+        poetsen: ['"Poetsen One"', 'sans-serif'],
       },
       animation: {
         "bounce-slow": "bounce 1.2s infinite",

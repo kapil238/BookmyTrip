@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heart } from "lucide-react";
 
 type Props = {
@@ -9,6 +9,12 @@ type Props = {
 };
 
 const DestinationCard: React.FC<Props> = ({ image, name, location, price }) => {
+  const [liked, setLiked] = useState(false);
+
+  const toggleLike = () => {
+    setLiked((prev) => !prev);
+  };
+
   return (
     <div className="rounded-xl overflow-hidden shadow-md bg-white w-full sm:max-w-sm md:max-w-md lg:max-w-xs group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
       <div className="relative overflow-hidden">
@@ -20,8 +26,15 @@ const DestinationCard: React.FC<Props> = ({ image, name, location, price }) => {
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        <button className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white rounded-full p-1.5 sm:p-2 shadow-md group-hover:animate-bounce">
-          <Heart className="text-red-500 w-4 h-4 sm:w-5 sm:h-5" />
+        <button
+          onClick={toggleLike}
+          className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white rounded-full p-1.5 sm:p-2 shadow-md"
+        >
+          <Heart
+            className={`w-4 h-4 sm:w-5 sm:h-5 ${
+              liked ? "fill-red-500 text-red-500" : "text-red-500"
+            }`}
+          />
         </button>
 
         <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-500">

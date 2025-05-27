@@ -137,25 +137,25 @@ export default function PaymentPage() {
               <div className="flex flex-wrap justify-between mt-4 text-sm text-gray-600 gap-2">
                 {isCarBooking ? (
                   <>
-                    <div>Fuel Type: {fuelType}</div>
-                    <div>Km Charges: Rs. 14/km after {unit} KM</div>
+                    <div><span className="text-orange-500">Fuel Type : </span>{fuelType}</div>
+                    <div><span className="text-orange-500">Km Charges : </span> Rs. 14/km after {unit} KM</div>
                     <div>
-                      Extra: {luggage} Luggage Bags | {seats} Seats | AC
+                      <span className="text-orange-500">Extra : </span>{luggage} Luggage Bags | {seats} Seats | AC
                     </div>
                   </>
                 ) : isFlightBooking ? (
                   <>
-                    <div>Duration: {duration}</div>
-                    <div>Stops: {stops}</div>
-                    <div>Class: {cabinClass}</div>
-                    <div>Flight Type: {flightType}</div>
+                    <div><span className="text-orange-500">Duration : </span>{duration}</div>
+                    <div><span className="text-orange-500">Stops : </span>{stops}</div>
+                    <div><span className="text-orange-500">Class : </span>{cabinClass}</div>
+                    <div><span className="text-orange-500">Flight Type : </span>{flightType}</div>
                   </>
                 ) : null}
                 {isTourBooking && (
                   <>
-                    <div>Type: {type}</div>
-                    <div>Duration: {duration}</div>
-                    <div>Highlights: {highlights}</div>
+                    <div><span className="text-orange-500">Type : </span>{type}</div>
+                    <div><span className="text-orange-500">Duration : </span>{duration}</div>
+                    <div><span className="text-orange-500">Highlights : </span>{highlights}</div>
                   </>
                 )}
               </div>

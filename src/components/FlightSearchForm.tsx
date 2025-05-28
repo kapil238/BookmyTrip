@@ -11,6 +11,7 @@ const airports = [
   { value: "ccu", label: "Kolkata (CCU)" },
   { value: "hyd", label: "Hyderabad (HYD)" },
   { value: "maa", label: "Chennai (MAA)" },
+  { value: "pak", label: "Pakistan (PAK)" },
 ];
 
 const travellers = [
@@ -52,7 +53,6 @@ export default function FlightSearchForm() {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 max-w-6xl mx-auto space-y-4">
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
-        {/* Flight Way Selection */}
         <div className="flex items-center gap-6">
           <label className="flex items-center gap-2">
             <input
@@ -77,8 +77,6 @@ export default function FlightSearchForm() {
             Round-Trip
           </label>
         </div>
-
-        {/* Flight Search Fields */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <Input label="From" name="from" type="select" options={airports} />
           <Input label="To" name="to" type="select" options={airports} />
@@ -92,7 +90,6 @@ export default function FlightSearchForm() {
           />
         </div>
 
-        {/* Add Place/Car and Search Button */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2">

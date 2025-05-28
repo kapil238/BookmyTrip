@@ -39,7 +39,7 @@ const flightData = [
   },
   {
     airline: "Air India Express",
-    from: "Delhi",
+    from: "Chennai",
     to: "Mumbai",
     duration: "2h 20m",
     stops: "1 Stop",

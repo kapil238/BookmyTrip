@@ -18,7 +18,7 @@ export default function Header() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="border-b border-dashed-2 border-gray-300">
+    <header className="border-b border-dashed border-gray-300">
       <div className="container mx-auto max-w-7xl flex justify-between items-center px-4 py-3">
         <div className="flex items-center gap-2">
           <Link href="/">

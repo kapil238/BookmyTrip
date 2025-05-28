@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { BsBookFill } from "react-icons/bs";
 import { FaPlaneDeparture } from "react-icons/fa";
 
@@ -60,6 +63,24 @@ const routes = [
 ];
 
 export default function FlightRoutes() {
+  const router = useRouter();
+
+  const handleNavigate = (from: string, to: string) => {
+    const departure = new Date().toISOString().split("T")[0];
+    const returnDate = "";
+    const travellers = "1";
+
+    const query = new URLSearchParams({
+      from,
+      to,
+      departure,
+      return: returnDate,
+      travellers,
+    }).toString();
+
+    router.push(`/flights?${query}`);
+  };
+
   return (
     <section className="py-12 px-4 max-w-7xl mx-auto">
       <h2 className="text-3xl font-bold text-center mb-10">
@@ -69,7 +90,8 @@ export default function FlightRoutes() {
         {routes.map((route, i) => (
           <div
             key={i}
-            className="flex items-center gap-4 p-4 rounded-lg bg-white shadow-sm transform transition-all duration-1000 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:scale-105 hover:bg-orange-50 group"
+            onClick={() => handleNavigate(route.from, route.to)}
+            className="cursor-pointer flex items-center gap-4 p-4 rounded-lg bg-white shadow-sm transform transition-all duration-1000 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:scale-105 hover:bg-orange-50 group"
           >
             <Image
               src={route.image}

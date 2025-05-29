@@ -21,15 +21,14 @@ const room = [
 
 export default function Hotel() {
   const [option, setOption] = useState("place");
-  const router = useRouter(); // ✅ Fix: initialize router
-
+  const router = useRouter(); 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push("/hotels");
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-6xl mx-auto space-y-4">
+    <div className="bg-white rounded-b-2xl rounded-tr-2xl p-6 max-w-6xl mx-auto space-y-4">
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"

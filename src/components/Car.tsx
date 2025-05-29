@@ -26,7 +26,7 @@ export default function CarSearchForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 max-w-full w-full">
+    <div className="rounded-b-2xl rounded-tr-2xl p-4 sm:p-6 max-w-full w-full">
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"

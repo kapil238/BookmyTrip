@@ -29,7 +29,7 @@ export default function Tour() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-6xl mx-auto space-y-4">
+    <div className="bg-white rounded-b-2xl rounded-tr-2xl p-6 max-w-6xl mx-auto space-y-4">
       <form
         onSubmit={handleSubmit}
         className="space-y-4"

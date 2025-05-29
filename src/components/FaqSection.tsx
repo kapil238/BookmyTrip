@@ -29,14 +29,12 @@ const faqs = [
 export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Proper type for contentRefs to avoid red underline
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
-  // Assign height based on open/closed state
   useEffect(() => {
     contentRefs.current.forEach((ref, index) => {
       if (ref) {
@@ -46,7 +44,6 @@ export default function FaqSection() {
     });
   }, [activeIndex]);
 
-  // Helper function to assign refs cleanly
   const setRef = (index: number) => (el: HTMLDivElement | null) => {
     contentRefs.current[index] = el;
   };

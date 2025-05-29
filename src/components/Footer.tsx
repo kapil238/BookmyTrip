@@ -3,8 +3,13 @@ import Link from "next/link";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
+  const bgimageUrl =
+    "https://demo.qzency.com/html/tripfy/preview/assets/image/banner-img/hero-section.png";
   return (
-    <footer className="bg-orange-100 text-orange-600 py-12 px-6 md:px-20 border-t-8 border-b-8 border-orange-600">
+    <footer
+      className="bg-orange-100 text-orange-600 py-12 px-6 md:px-20 border-t-8 border-b-8 border-orange-600"
+      style={{ backgroundImage: `url('${bgimageUrl}')` }}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="col-span-1 lg:col-span-1">
           <h2 className="text-3xl font-bold mb-4">BookMyTrip</h2>

@@ -51,7 +51,7 @@ export default function FlightSearchForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 max-w-6xl mx-auto space-y-4">
+    <div className="bg-white rounded-b-2xl rounded-tr-2xl p-6 max-w-6xl mx-auto space-y-4">
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
         <div className="flex items-center gap-6">
           <label className="flex items-center gap-2">
